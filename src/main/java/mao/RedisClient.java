@@ -377,13 +377,33 @@ public class RedisClient
      */
     public Object mget(String... key)
     {
-        if (key == null)
+        if (key == null || key.length == 0)
         {
             return null;
         }
         String[] args = new String[key.length + 1];
         args[0] = "mget";
         System.arraycopy(key, 0, args, 1, key.length);
+        sendRequest(args);
+        return getResponse();
+    }
+
+
+    /**
+     * redis的mset命令
+     *
+     * @param key_and_value 一个key，一个value，一个key，一个value......
+     * @return Object
+     */
+    public Object mset(String... key_and_value)
+    {
+        if (key_and_value == null || key_and_value.length == 0)
+        {
+            return null;
+        }
+        String[] args = new String[key_and_value.length + 1];
+        args[0] = "mset";
+        System.arraycopy(key_and_value, 0, args, 1, key_and_value.length);
         sendRequest(args);
         return getResponse();
     }
