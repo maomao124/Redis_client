@@ -408,6 +408,60 @@ public class RedisClient
         return getResponse();
     }
 
+    /**
+     * 设置key的过期时间
+     *
+     * @param key          key
+     * @param milliseconds 毫秒数
+     * @return Object
+     */
+    public Object pexpire(String key, Long milliseconds)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("PEXPIRE", key, milliseconds.toString());
+        return getResponse();
+    }
+
+    /**
+     * 查看key的过期时间
+     *
+     * @param key key
+     * @return Object ，过期时间，单位为秒
+     */
+    public Object ttl(String key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("TTL", key);
+        return getResponse();
+    }
+
+    /**
+     * hset命令
+     *
+     * @param key             key
+     * @param field_and_value field和value，例如：a 1 b 2 c 3
+     * @return Object
+     */
+    public Object hset(String key, String... field_and_value)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        String[] args = new String[field_and_value.length + 2];
+        args[0] = "hset";
+        args[1] = key;
+        System.arraycopy(field_and_value, 0, args, 2, field_and_value.length);
+        sendRequest(args);
+        return getResponse();
+    }
+
 
     /**
      * Test.

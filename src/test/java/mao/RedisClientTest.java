@@ -70,4 +70,22 @@ class RedisClientTest
         System.out.println(redisClient.delete("q2"));
         System.out.println(redisClient.delete("q3"));
     }
+
+    @Test
+    void pexpire()
+    {
+        System.out.println(redisClient.pexpire("key12", 20000L));
+    }
+
+    @Test
+    void ttl()
+    {
+        System.out.println(redisClient.ttl("key12"));
+    }
+
+    @Test
+    void hset()
+    {
+        System.out.println(redisClient.hset("map14", "a", "1", "b", "2", "c", "3", "d", "4"));
+    }
 }
