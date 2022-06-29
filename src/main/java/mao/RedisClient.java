@@ -595,7 +595,7 @@ public class RedisClient
     /**
      * 向集合中添加一个或者多个元素，并且自动去重
      *
-     * @param key   key
+     * @param key    key
      * @param member member
      * @return Object
      */
@@ -615,7 +615,22 @@ public class RedisClient
     }
 
 
-
+    /**
+     * 弹出指定数量的元素
+     *
+     * @param key   key
+     * @param count 要弹出的元素的数量
+     * @return Object
+     */
+    public Object spop(String key, int count)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("spop", key, String.valueOf(count));
+        return getResponse();
+    }
 
 
     /**

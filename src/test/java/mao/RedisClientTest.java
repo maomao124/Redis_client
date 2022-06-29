@@ -150,4 +150,13 @@ class RedisClientTest
     {
         System.out.println(redisClient.sadd("set6", "1", "2", "3", "8", "12", "15", "22", "29", "33"));
     }
+
+    @Test
+    void spop()
+    {
+        System.out.println(redisClient.spop("set6",1));
+        System.out.println(redisClient.spop("set6",1));
+        System.out.println(redisClient.spop("set6",1));
+        System.out.println(redisClient.spop("set6",9999));
+    }
 }
