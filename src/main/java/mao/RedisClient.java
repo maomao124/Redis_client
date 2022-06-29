@@ -570,6 +570,27 @@ public class RedisClient
         return getResponse();
     }
 
+    /**
+     * 从列表的头部弹出元素，默认为第一个元素
+     *
+     * @param key key
+     * @return Object（弹出的元素）
+     */
+    public Object lpop(String key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("lpop", key);
+        Object response = getResponse();
+        if (response == null || response.equals(""))
+        {
+            return null;
+        }
+        return response;
+    }
+
 
     /**
      * Test.

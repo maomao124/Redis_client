@@ -128,4 +128,20 @@ class RedisClientTest
     {
         System.out.println(redisClient.llen("list3"));
     }
+
+    @Test
+    void lpop()
+    {
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+        System.out.println(redisClient.lpop("list3"));
+    }
 }
