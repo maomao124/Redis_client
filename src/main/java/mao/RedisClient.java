@@ -71,9 +71,9 @@ import java.util.List;
 
 public class RedisClient
 {
-    private Socket socket;
-    private PrintWriter printWriter;
-    private BufferedReader bufferedReader;
+    private final Socket socket;
+    private final PrintWriter printWriter;
+    private final BufferedReader bufferedReader;
 
 
     /**

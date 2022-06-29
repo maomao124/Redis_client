@@ -22,15 +22,15 @@ public class RedisInformation
     /**
      * ip
      */
-    private static String host;
+    private static final String host;
     /**
      * 端口号
      */
-    private static int port;
+    private static final int port;
     /**
      * 密码
      */
-    private static String password;
+    private static final String password;
 
     /**
      * 单行字符串
