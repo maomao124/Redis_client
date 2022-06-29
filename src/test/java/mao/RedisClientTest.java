@@ -116,4 +116,16 @@ class RedisClientTest
     {
         System.out.println(redisClient.hlen("map14"));
     }
+
+    @Test
+    void lpush()
+    {
+        System.out.println(redisClient.lpush("list3", "1", "2", "3", "8", "12", "15", "22", "29"));
+    }
+
+    @Test
+    void llen()
+    {
+        System.out.println(redisClient.llen("list3"));
+    }
 }

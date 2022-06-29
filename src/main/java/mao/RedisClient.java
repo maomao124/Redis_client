@@ -532,6 +532,44 @@ public class RedisClient
         return getResponse();
     }
 
+    /**
+     * 在列表头部插入一个或者多个值
+     *
+     * @param key   key
+     * @param value value
+     * @return Object
+     */
+    public Object lpush(String key, String... value)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+
+        String[] args = new String[value.length + 2];
+        args[0] = "lpush";
+        args[1] = key;
+        System.arraycopy(value, 0, args, 2, value.length);
+        sendRequest(args);
+        return getResponse();
+    }
+
+    /**
+     * 获取列表的长度
+     *
+     * @param key key
+     * @return Object（字段数量）
+     */
+    public Object llen(String key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("llen", key);
+        return getResponse();
+    }
+
 
     /**
      * Test.
