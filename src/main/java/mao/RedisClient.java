@@ -593,6 +593,32 @@ public class RedisClient
 
 
     /**
+     * 向集合中添加一个或者多个元素，并且自动去重
+     *
+     * @param key   key
+     * @param member member
+     * @return Object
+     */
+    public Object sadd(String key, String... member)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+
+        String[] args = new String[member.length + 2];
+        args[0] = "sadd";
+        args[1] = key;
+        System.arraycopy(member, 0, args, 2, member.length);
+        sendRequest(args);
+        return getResponse();
+    }
+
+
+
+
+
+    /**
      * Test.
      */
     public void test()

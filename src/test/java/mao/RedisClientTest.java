@@ -144,4 +144,10 @@ class RedisClientTest
         System.out.println(redisClient.lpop("list3"));
         System.out.println(redisClient.lpop("list3"));
     }
+
+    @Test
+    void sadd()
+    {
+        System.out.println(redisClient.sadd("set6", "1", "2", "3", "8", "12", "15", "22", "29", "33"));
+    }
 }
