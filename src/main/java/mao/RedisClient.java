@@ -516,6 +516,22 @@ public class RedisClient
         return getResponse();
     }
 
+    /**
+     * 获取存储在 key 中的哈希表的字段数量
+     *
+     * @param key key
+     * @return Object（字段数量）
+     */
+    public Object hlen(String key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("hlen", key);
+        return getResponse();
+    }
+
 
     /**
      * Test.

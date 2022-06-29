@@ -110,4 +110,10 @@ class RedisClientTest
     {
         System.out.println(redisClient.hvals("map14"));
     }
+
+    @Test
+    void hlen()
+    {
+        System.out.println(redisClient.hlen("map14"));
+    }
 }
