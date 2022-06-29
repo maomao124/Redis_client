@@ -328,7 +328,12 @@ public class RedisClient
             return null;
         }
         sendRequest("get", key);
-        return getResponse();
+        Object response = getResponse();
+        if (response == null || response.equals(""))
+        {
+            return null;
+        }
+        return response;
     }
 
     /**
@@ -344,22 +349,42 @@ public class RedisClient
         {
             return null;
         }
-        sendRequest("set", key,value);
+        sendRequest("set", key, value);
         return getResponse();
     }
 
     /**
-     * redis的mget命令
+     * redis的del命令，删除一个key
+     *
      * @param key key
-     * @return Object(list集合)
+     * @return Object(删除成功的个数)
      */
-    public Object mget(String key)
+    public Object delete(String key)
     {
         if (key == null)
         {
             return null;
         }
-        sendRequest("mget", key);
+        sendRequest("del", key);
+        return getResponse();
+    }
+
+    /**
+     * redis的mget命令
+     *
+     * @param key key
+     * @return Object(list集合)
+     */
+    public Object mget(String... key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        String[] args = new String[key.length + 1];
+        args[0] = "mget";
+        System.arraycopy(key, 0, args, 1, key.length);
+        sendRequest(args);
         return getResponse();
     }
 
@@ -375,7 +400,7 @@ public class RedisClient
         System.out.println(get("key11"));
         System.out.println(get("key11"));
         System.out.println(get("key1"));
-        System.out.println(set("key12","125678656"));
+        System.out.println(set("key12", "125678656"));
         System.out.println(get("key12"));
     }
 

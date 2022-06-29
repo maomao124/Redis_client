@@ -52,5 +52,12 @@ class RedisClientTest
     @Test
     void mget()
     {
+        System.out.println(redisClient.mget("key1","key11","key12"));
+    }
+
+    @Test
+    void delete()
+    {
+        System.out.println(redisClient.delete("key12"));
     }
 }
