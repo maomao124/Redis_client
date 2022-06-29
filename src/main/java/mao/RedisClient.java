@@ -462,6 +462,28 @@ public class RedisClient
         return getResponse();
     }
 
+    /**
+     * hget命令
+     *
+     * @param key   key
+     * @param field field
+     * @return Object(value)
+     */
+    public Object hget(String key, String field)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("hget", key, field);
+        Object response = getResponse();
+        if (response == null || response.equals(""))
+        {
+            return null;
+        }
+        return response;
+    }
+
 
     /**
      * Test.

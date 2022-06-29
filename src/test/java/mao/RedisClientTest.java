@@ -88,4 +88,14 @@ class RedisClientTest
     {
         System.out.println(redisClient.hset("map14", "a", "1", "b", "2", "c", "3", "d", "4"));
     }
+
+    @Test
+    void hget()
+    {
+        System.out.println(redisClient.hget("map14", "a"));
+        System.out.println(redisClient.hget("map14", "b"));
+        System.out.println(redisClient.hget("map14", "c"));
+        System.out.println(redisClient.hget("map14", "d"));
+        System.out.println(redisClient.hget("map14", "e"));
+    }
 }
