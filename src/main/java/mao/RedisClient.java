@@ -486,6 +486,38 @@ public class RedisClient
 
 
     /**
+     * 获取存储在 key 中的哈希表的所有字段
+     *
+     * @param key key
+     * @return Object (list集合）
+     */
+    public Object hkeys(String key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("hkeys", key);
+        return getResponse();
+    }
+
+    /**
+     * 用于获取哈希表中的所有值
+     *
+     * @return Object (list集合）
+     */
+    public Object hvals(String key)
+    {
+        if (key == null)
+        {
+            return null;
+        }
+        sendRequest("hvals", key);
+        return getResponse();
+    }
+
+
+    /**
      * Test.
      */
     public void test()

@@ -98,4 +98,16 @@ class RedisClientTest
         System.out.println(redisClient.hget("map14", "d"));
         System.out.println(redisClient.hget("map14", "e"));
     }
+
+    @Test
+    void hkeys()
+    {
+        System.out.println(redisClient.hkeys("map14"));
+    }
+
+    @Test
+    void hvals()
+    {
+        System.out.println(redisClient.hvals("map14"));
+    }
 }
